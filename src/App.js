@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import Barang from './component/Class/Barang';
+
+const datBarang = [
+  {
+    id : 1,
+    nama : 'Botol aqua',
+    stok : 10,
+    harga : 500,
+  }
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Barang datBarang={datBarang}/>
     </div>
   );
 }
