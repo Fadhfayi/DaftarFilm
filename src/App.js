@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Barang from './component/Class/Barang';
 
+
 const datBarang = [
   {
     id : 1,

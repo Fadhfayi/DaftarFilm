@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import InputSiswa from './component/Class/InputSiswa';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import InputBarang from './component/Class/dataBarang';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     {/* <App /> */}
-    < InputSiswa />
+    <InputBarang/>
   </React.StrictMode>
 );
 

@@ -5,73 +5,73 @@ let dataSiswas = [
   {
     id: 1,
     nama: 'Joki Production',
-    alamat: 'Drama,Romance',
-    premis: 'Cinta Kursi Roda',
-    beasiswa: false,
-    jurusan: 'Fiksi',
+    genre: 'Drama,Romancce',
+    judul: 'Cinta Kursi Roda',
+    sequel: false,
+    kategori: 'Fiksi',
 
   },
   {
     id: 2,
     nama: 'Bunga Picture',
-    alamat: '',
-    premis: 'Marbot Andalan jilid 3 ',
-    beasiswa: true,
-    jurusan: 'Dokumenter',
+    genre: '',
+    judul: 'Marbot Andalan jilid 3 ',
+    sequel: true,
+    kategori: 'Dokumenter',
 
   },
   {
     id: 3,
     nama: 'Pensil media',
-    alamat: 'Horror,Thriller',
-    premis: 'Lewat Batas',
-    beasiswa: false,
-    jurusan: 'Fiksi',
+    genre: 'Horror,Thriller',
+    judul: 'Lewat Batas',
+    sequel: false,
+    kategori: 'Fiksi',
 
   },
   {
     id: 4,
     nama: 'Imagine House',
-    alamat: 'Drama,Family',
-    premis: 'Rumah Dalam Memori',
-    beasiswa: false,
-    jurusan: 'Fiksi',
+    genre: 'Drama,Family',
+    judul: 'Rumah Dalam Memori',
+    sequel: false,
+    kategori: 'Fiksi',
 
   },
   {
     id: 5,
     nama: 'Pohon media',
-    alamat: '',
-    premis: 'Cling-Team episode 2  ',
-    beasiswa: true,
-    jurusan: 'Dokumenter',
+    genre: '',
+    judul: 'Cling-Team episode 2  ',
+    sequel: true,
+    kategori: 'Dokumenter',
 
   },
   {
     id: 6,
     nama: 'Setiawan',
-    alamat: 'Drama,Thriller',
-    premis: 'Salah Pilih (lagi)',
-    beasiswa: true,
-    jurusan: 'Fiksi',
+    genre: 'Drama,Thriller',
+    judul: 'Salah Pilih (lagi)',
+    sequel: true,
+    kategori: 'Fiksi',
 
   },
   {
     id: 7,
     nama: 'Page to Picture',
-    alamat: 'Drama,Family',
-    premis: 'Bukan Lagi Rumah',
-    beasiswa: true,
-    jurusan: 'Fiksi',
+    genre: 'Drama,Family',
+    judul: 'Bukan Lagi Rumah',
+    sequel: true,
+    kategori: 'Fiksi',
 
   },
   {
     id: 8,
     nama: 'Kangoo Production',
-    alamat: 'Drama,Comedy',
-    premis: 'Telap',
-    beasiswa: false,
-    jurusan: 'Fiksi',
+    genre: 'Drama,Comedy',
+    judul: 'Telap',
+    sequel: false,
+    kategori: 'Fiksi',
 
   },  
 
@@ -85,14 +85,20 @@ class InputSiswa extends React.Component {
     super()
     this.state = {
       nama: '',
-      alamat: '',
-      premis: '',
-      beasiswa: false,
-      jurusan: '',
+      genre: '',
+      judul: '',
+      sequel: false,
+      kategori: '',
       id: '',
       namaTombol: "Tambah"
     }
   }
+componentDidMount(){
+  let url = "https://project-react-1420e-default-rtdb.";
+    url += "asia-southeast1.firebasedatabase.app";
+    url += "/film.json";
+
+}
 
   handleEditButton = (data) => {
     // console.log(dataSiswas);
@@ -101,10 +107,10 @@ class InputSiswa extends React.Component {
     )
     this.setState({
       nama: newDatas[0].nama,
-      alamat: newDatas[0].alamat,
-      premis: newDatas[0].premis,   
-      beasiswa: newDatas[0].beasiswa,
-      jurusan: newDatas[0].jurusan,
+      genre: newDatas[0].genre,
+      judul: newDatas[0].judul,   
+      sequel: newDatas[0].sequel,
+      kategori: newDatas[0].kategori,
       id: newDatas[0].id,
       namaTombol: "Ubah",
       modal: false
@@ -123,10 +129,10 @@ class InputSiswa extends React.Component {
   clearState = () => {
     this.setState({
       nama: '',
-      alamat: '',
-      premis: '',
-      beasiswa: '',
-      jurusan: '',
+      genre: '',
+      judul: '',
+      sequel: '',
+      kategori: '',
       id: '',
       namaTombol: "Tambah",
     })
@@ -212,12 +218,12 @@ class InputSiswa extends React.Component {
                   id="exampleSelect"
                   name="select"
                   type="select"
-                  value={this.state.jurusan}
+                  value={this.state.kategori}
                   onChange={(a) => {
-                    return this.setState({ jurusan: a.target.value })
+                    return this.setState({ kategori: a.target.value })
                   }}
              
-                  valid={this.state.jurusan.trim() !== "" && true}
+                  valid={this.state.kategori.trim() !== "" && true}
                 >
                   <option>
                     Dokumenter
@@ -229,18 +235,18 @@ class InputSiswa extends React.Component {
               </FormGroup>
               <FormGroup>
                 <Label for="exampleText">
-                  Judul
+                  judul
                 </Label>
                 <Input
                   id="exampleText"
                   name="text"
                   type="textarea"
-                  value={this.state.premis}
+                  value={this.state.judul}
                   onChange={(a) => {
-                    return this.setState({ premis: a.target.value })
+                    return this.setState({ judul: a.target.value })
                   }}
-                  invalid={this.state.premis.trim() === "" && true}
-                  valid={this.state.premis.trim() !== "" && true}
+                  invalid={this.state.judul.trim() === "" && true}
+                  valid={this.state.judul.trim() !== "" && true}
                 />
               </FormGroup>
               <FormGroup>
@@ -251,19 +257,19 @@ class InputSiswa extends React.Component {
                   id="exampleText"
                   name="text"
                   type="textarea"
-                  value={this.state.alamat}
+                  value={this.state.genre}
                   onChange={(a) => {
-                    return this.setState({ alamat: a.target.value })
+                    return this.setState({ genre: a.target.value })
                   }}
-                  invalid={this.state.alamat.trim() === "" && true}
-                  valid={this.state.alamat.trim() !== "" && true}
+                  invalid={this.state.genre.trim() === "" && true}
+                  valid={this.state.genre.trim() !== "" && true}
                 />
               </FormGroup>
               
               <FormGroup check>
-                <Input type="checkbox" checked={this.state.beasiswa === true}
+                <Input type="checkbox" checked={this.state.sequel === true}
                   onChange={(a) => {
-                    return this.setState({ beasiswa: a.target.checked })
+                    return this.setState({ sequel: a.target.checked })
                   }} />
                 <Label check>
                   Film Lanjutan
@@ -303,7 +309,7 @@ class InputSiswa extends React.Component {
                   Kategori 
                 </th>
                 <th>
-                  Judul
+                  judul
                 </th>
                 <th>
                   Genre
@@ -326,13 +332,13 @@ class InputSiswa extends React.Component {
                     {siswa.nama}
                   </td>
                   <td>
-                    {siswa.jurusan}
+                    {siswa.kategori}
                   </td>
                   <td>
-                    {siswa.premis}
+                    {siswa.judul}
                   </td>
-                  <td>{siswa.alamat}</td>
-                  <td> {siswa.beasiswa.toString()} </td>
+                  <td>{siswa.genre}</td>
+                  <td> {siswa.sequel.toString()} </td>
                   <td>
                     <div>
                       <Button
